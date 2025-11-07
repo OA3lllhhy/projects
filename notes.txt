@@ -1,0 +1,3 @@
+source HaoyunProject/bin/activate
+
+source /work/submit/jaeyserm/software/FCCAnalyses/setup.sh

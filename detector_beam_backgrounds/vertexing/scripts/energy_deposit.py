@@ -4,6 +4,7 @@ import hist
 import functions
 import pickle
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--calculate', help="Calculate", action='store_true')
@@ -15,12 +16,15 @@ args = parser.parse_args()
 # this file is for plotting the number of hits over energy deposited in each layer
 ##########################################################################################
 
-folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_guineaPig_andrea_June2024_v23"
+# folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_guineaPig_andrea_June2024_v23"
+# folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/IDEA_guineaPig_andrea_June2024_v23"
+# folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_wz3p6_ee_qq_ecm91p2"
+folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/IDEA_wz3p6_ee_qq_ecm91p2"
 files = glob.glob(f"{folder}/*.root")
 
 
-# layer_radii = [14, 23, 34.5, 141, 316] # IDEA vertex approximate layer radii
-layer_radii = [14, 36, 58] # CLD vertex approximate layer radii
+layer_radii = [14, 23, 34.5, 141, 316] # IDEA vertex approximate layer radii
+# layer_radii = [14, 36, 58] # CLD vertex approximate layer radii
 hits = {r: [] for r in layer_radii}
 
 
@@ -69,7 +73,8 @@ if args.calculate:
 
 if args.plots:
 
-    outdir = "./"
+    outdir = "./energy_deposit_plots/IDEA_phevents/"
+    os.makedirs(outdir, exist_ok=True)
     with open("output.pkl", "rb") as f:
         hists = pickle.load(f)
 

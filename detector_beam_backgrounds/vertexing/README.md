@@ -22,13 +22,13 @@ Each particle (whether signal or background) leaves a hit in the vertex detector
 python energy_deposit.py --calculate --maxFiles 100
 ```
 
-In the ```energy_deposit.py```, you can specify your detector (IDEA or CLD) and the process (beam backgrounds or physics events, Z->hadrons in this case). The ```maxFiles``` argument is optional (remove it if you want to run over all the files and events). 
+In the ```energy_deposit.py```, you can specify the process (beam backgrounds or physics events, Z->hadrons in this case). The ```maxFiles``` argument is optional (remove it if you want to run over all the files and events). 
 
 
-To plot the energy distributions for each layer, execute the following command:
+To plot the energy distributions for each layer in IDEA (Default IDEA, can change to CLD), execute the following command:
 
 ```
-python energy_deposit.py --plots
+python energy_deposit.py --plots --detector IDEA
 ```
 
 It generates the energy deposits for each layer. There are 3 types of energy deposit plots:
@@ -39,6 +39,16 @@ It generates the energy deposits for each layer. There are 3 types of energy dep
 
 
 ## Hit maps
+```
+python hitmaps.py --calculate --maxFiles 100
+```
+In the ```hitmaps.py```, you can specify your detector (IDEA or CLD) and the process (beam backgrounds or physics events, Z->hadrons in this case). The ```maxFiles``` argument is optional (remove it if you want to run over all the files and events). 
+
+
+To plot the energy distributions for each layer, execute the following command:
+```
+python hitmaps.py --plot
+```
 
 
 ## Occupancy

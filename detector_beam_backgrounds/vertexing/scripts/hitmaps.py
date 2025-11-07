@@ -5,6 +5,7 @@ import functions
 import pickle
 import argparse
 import math
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--calculate', help="Calculate", action='store_true')
@@ -18,7 +19,7 @@ args = parser.parse_args()
 # function of phi and theta
 ##########################################################################################
 
-folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_guineaPig_andrea_June2024_v23"
+# folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_guineaPig_andrea_June2024_v23"
 folder = "/ceph/submit/data/group/fcc/ee/detector/VTXStudiesFullSim/CLD_wz3p6_ee_qq_ecm91p2"
 
 files = glob.glob(f"{folder}/*.root")
@@ -83,7 +84,8 @@ if args.calculate:
 
 if args.plots:
 
-    outdir = "./"
+    outdir = "./hitmaps_plots/CLD/phevents"
+    os.makedirs(outdir, exist_ok=True)
     with open("output_hitmaps.pkl", "rb") as f:
         hists = pickle.load(f)
 
